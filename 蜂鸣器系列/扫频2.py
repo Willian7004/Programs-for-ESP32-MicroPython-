@@ -12,7 +12,7 @@ if __name__=="__main__":
     while True:
         i=not i  #非运算
         beep.value(i)  
-        time.sleep_us(a)  #脉冲频率为2KHz
+        time.sleep_us(a) 
         a+=1
         if a==1000 :
             a=0
