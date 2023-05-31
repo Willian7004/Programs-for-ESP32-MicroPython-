@@ -1,3 +1,4 @@
+#输出引脚：15、2、0、4、16、17、5、18
 #导入Pin模块
 from machine import Pin
 from machine import PWM
@@ -16,14 +17,14 @@ led8=PWM(Pin(18),freq=10000,duty=0)
 #程序入口
 if __name__=="__main__":
    while True:
-        duty_value1=int(input("输入占空比1（1-1023）"))
-        duty_value2=int(input("输入占空比2（1-1023）"))
-        duty_value3=int(input("输入占空比3（1-1023）"))
-        duty_value4=int(input("输入占空比4（1-1023）"))
-        duty_value5=int(input("输入占空比5（1-1023）"))
-        duty_value6=int(input("输入占空比6（1-1023）"))
-        duty_value7=int(input("输入占空比7（1-1023）"))
-        duty_value8=int(input("输入占空比8（1-1023）"))
+        duty_value1=int(input("输入占空比1（0-1023）"))
+        duty_value2=int(input("输入占空比2（0-1023）"))
+        duty_value3=int(input("输入占空比3（0-1023）"))
+        duty_value4=int(input("输入占空比4（0-1023）"))
+        duty_value5=int(input("输入占空比5（0-1023）"))
+        duty_value6=int(input("输入占空比6（0-1023）"))
+        duty_value7=int(input("输入占空比7（0-1023）"))
+        duty_value8=int(input("输入占空比8（0-1023）"))
         led1.duty(duty_value1)
         time.sleep_ms(10)
         led2.duty(duty_value2)
