@@ -14,7 +14,8 @@ while True:
     if e%10==8 :
       e+=3
     if e==91 :
-      e==11  
+      e==11
+      time.sleep_ms(1000)
     a=0
     t=0
     if e%10==1 :
