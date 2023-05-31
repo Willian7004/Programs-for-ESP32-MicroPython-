@@ -1,18 +1,3 @@
-'''
-深圳市普中科技有限公司（PRECHIN 普中）
-技术支持：www.prechin.net
-PRECHIN
- 普中
-
-实验名称：PWM呼吸灯实验
-接线说明：LED模块-->ESP32 IO
-         (D1)-->(15)
-         
-实验现象：程序下载成功后，D1指示灯呈现呼吸灯效果，由暗变亮，再由亮变暗
-注意事项：
-
-'''
-
 #导入Pin模块
 from machine import Pin
 from machine import PWM
