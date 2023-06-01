@@ -1,7 +1,7 @@
 #接线：(IR)-->(14)
 #接线： WS-->(27)
 '''
-Pin15、2、0、4、16、17、5、8依次控制左前、右前、左后、右后轮正、反转
+Pin15、2、0、4、17、5、18、19依次控制左前、右前、左后、右后轮正、反转
 '''
          
 #导入Pin模块
@@ -21,10 +21,10 @@ led1=Pin(15,Pin.OUT)#构建led1对象，GPIO15输出
 led2=Pin(2,Pin.OUT)
 led3=Pin(0,Pin.OUT)
 led4=Pin(4,Pin.OUT)
-led5=Pin(16,Pin.OUT)
-led6=Pin(17,Pin.OUT)
-led7=Pin(5,Pin.OUT)
-led8=Pin(18,Pin.OUT)
+led5=Pin(17,Pin.OUT)
+led6=Pin(5,Pin.OUT)
+led7=Pin(18,Pin.OUT)
+led8=Pin(19,Pin.OUT)
 
 #存储红外遥控器键值
 gired_data=[0,0,0,0]
@@ -96,109 +96,42 @@ def ired_irq(ired):
             for i in range(4):
                 gired_data[i]=0
                 return
-             
+    
+    def wheels(d,e,f,g,h,i,j,k) :
+        led1.value(d)
+        led2.value(e)
+        led3.value(f)
+        led4.value(g)
+        led5.value(h)
+        led6.value(i)
+        led7.value(j)
+        led8.value(k)
+        
     print("红外遥控器操作码：0x%02X"%gired_data[2])
     if gired_data[2]==0x45 :
-     led1.value(1)
-     led2.value(0)
-     led3.value(0)
-     led4.value(0)
-     led5.value(0)
-     led6.value(0)
-     led7.value(1)
-     led8.value(0)
+          wheels(1,0,0,0,0,0,1,0)
     elif gired_data[2]==0x46 :
-     led1.value(1)
-     led2.value(0)
-     led3.value(1)
-     led4.value(0)
-     led5.value(1)
-     led6.value(0)
-     led7.value(1)
-     led8.value(0)
+          wheels(1,0,1,0,1,0,1,0)
     elif gired_data[2]==0x47 :
-     led1.value(0)
-     led2.value(0)
-     led3.value(1)
-     led4.value(0)
-     led5.value(1)
-     led6.value(0)
-     led7.value(0)
-     led8.value(0)
+          wheels(0,0,1,0,1,0,0,0)
     elif gired_data[2]==0x44 :
-     led1.value(1)
-     led2.value(0)
-     led3.value(0)
-     led4.value(1)
-     led5.value(0)
-     led6.value(1)
-     led7.value(1)
-     led8.value(0)
+          wheels(1,0,0,1,0,1,1,0)
     elif gired_data[2]==0x40 :
-     led1.value(0)
-     led2.value(0)
-     led3.value(0)
-     led4.value(0)
-     led5.value(0)
-     led6.value(0)
-     led7.value(0)
-     led8.value(0)
+          wheels(0,0,0,0,0,0,0,0)
     elif gired_data[2]==0x43 :
-     led1.value(0)
-     led2.value(1)
-     led3.value(1)
-     led4.value(0)
-     led5.value(1)
-     led6.value(0)
-     led7.value(0)
-     led8.value(1)
+          wheels(0,1,1,0,1,0,0,1)
     elif gired_data[2]==0x07 :
-     led1.value(0)
-     led2.value(0)
-     led3.value(0)
-     led4.value(1)
-     led5.value(0)
-     led6.value(1)
-     led7.value(0)
-     led8.value(0)
+          wheels(0,0,0,1,0,1,0,0)
     elif gired_data[2]==0x15 :
-     led1.value(0)
-     led2.value(1)
-     led3.value(0)
-     led4.value(1)
-     led5.value(0)
-     led6.value(1)
-     led7.value(0)
-     led8.value(1)
+          wheels(0,1,0,1,0,1,0,1)
     elif gired_data[2]==0x09 :
-     led1.value(0)
-     led2.value(1)
-     led3.value(0)
-     led4.value(0)
-     led5.value(0)
-     led6.value(0)
-     led7.value(0)
-     led8.value(1)
-    elif gired_data[2]==0x16 :
-     led1.value(0)
-     led2.value(1)
-     led3.value(1)
-     led4.value(0)
-     led5.value(0)
-     led6.value(1)
-     led7.value(1)
-     led8.value(0)
-     time0.init(period=500,mode=Timer.ONE_SHOT,callback=time0_irq)
+          wheels(0,1,0,0,0,0,0,1)
+    elif gired_data[2]==0x16 :     
+          wheels(0,1,1,0,0,1,1,0)
+          time0.init(period=200,mode=Timer.ONE_SHOT,callback=time0_irq)
     elif gired_data[2]==0x0D :
-     led1.value(1)
-     led2.value(0)
-     led3.value(0)
-     led4.value(1)
-     led5.value(1)
-     led6.value(0)
-     led7.value(0)
-     led8.value(1)
-     time0.init(period=500,mode=Timer.ONE_SHOT,callback=time0_irq)
+          wheels(1,0,0,1,1,0,0,1)
+          time0.init(period=200,mode=Timer.ONE_SHOT,callback=time0_irq)
 
 #程序入口
 if __name__=="__main__":
