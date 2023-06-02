@@ -1,26 +1,10 @@
 '''
-深圳市普中科技有限公司（PRECHIN 普中）
-技术支持：www.prechin.net
-PRECHIN
- 普中
-
-实验名称：BMP280气压传感器实验
-接线说明：BMP280气压传感器模块-->ESP32 IO
+接线：BMP280
          SCL-->25
          SDA-->26
-         VCC-->3V3
-         GND-->GND
-         
-         OLED(IIC)液晶模块-->ESP32 IO
-         GND-->(GND)
-         VCC-->(5V)
+      OLED(IIC)
          SCL-->(18)
          SDA-->(23)
-         
-实验现象：程序下载成功后，间隔一段时间在Shell控制台输出传感器检测的温度及压力值
-
-注意事项：
-
 '''
 
 from machine import Pin,SoftI2C,Timer
