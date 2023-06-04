@@ -19,6 +19,7 @@ from machine import RTC
 from hcsr04 import HCSR04
 from neopixel import NeoPixel
 from servo import Servo
+from machine import Timer
 
 #定义DHT11控制对象
 dht11=dht.DHT11(Pin(27))
@@ -45,17 +46,18 @@ lcd = I2cLcd(i2c, DEFAULT_I2C_ADDR, 2, 16)  # 初始化(设备地址, 背光设�
 #定义星期
 week=("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
 
+temp=0
+humi=0
 # 循环函数
 def loop():
     e=0
     d=0
+    global temp
+    global humi
     while True:
-        dht11.measure()  #调用DHT类库中测量数据的函数
-        temp = dht11.temperature()
-        humi = dht11.humidity()
         date_time=rtc.datetime()
         distance=hcsr04.distance_cm()
-        lcd.putstr("%d%02d%02d t%d h%d"%(date_time[0],date_time[1],date_time[2],temp,humi))       
+        lcd.putstr("%d%02d%02d t%02d h%02d"%(date_time[0],date_time[1],date_time[2],temp,humi))       
         lcd.putstr("%02d:%02d:%02d %s %03d"%(date_time[4],date_time[5],date_time[6],week[date_time[3]],distance))
         if distance<20 :
             my_servo.write_angle(90)
@@ -73,6 +75,7 @@ def loop():
                for i in range(rgb_num):
                    rgb_led[i]=(0, 0, 255)
                    rgb_led.write()
+            time.sleep_ms(400)       
             e+=1
             if e==3 :
                 e=0
@@ -83,11 +86,20 @@ def loop():
                     c=random.randint(0,255)
                     rgb_led[i]=(a, b, c)
                     rgb_led.write()
-        time.sleep_ms(200)  #如果延时时间过短，DHT11温湿度传感器不工作
+        time.sleep_ms(100)  
         my_servo.write_angle(180)
         d=0
+        
+def time0_irq(time0):
+    global temp
+    global humi
+    dht11.measure()  #调用DHT类库中测量数据的函数
+    temp = dht11.temperature()
+    humi = dht11.humidity()
 
 # 程序入口
 if __name__ == '__main__':    
 #     setup()           # 初始化GPIO口
+    time0=Timer(0)  #创建time0定时器对象
+    time0.init(period=2000,mode=Timer.PERIODIC,callback=time0_irq)
     loop()            # 循环函数
