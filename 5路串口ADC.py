@@ -1,7 +1,3 @@
-'''
-接线: ADC-->(34)  
-'''
-
 #导入Pin模块
 from machine import Pin
 from machine import ADC
