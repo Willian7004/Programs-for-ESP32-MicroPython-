@@ -18,6 +18,6 @@ def time0_irq(time0):
 #程序入口
 if __name__=="__main__":
     time0=Timer(0)  #创建time0定时器对象
-    time0.init(period=10,mode=Timer.PERIODIC,callback=time0_irq)
+    time0.init(period=3,mode=Timer.PERIODIC,callback=time0_irq)
     while True:
         pass
