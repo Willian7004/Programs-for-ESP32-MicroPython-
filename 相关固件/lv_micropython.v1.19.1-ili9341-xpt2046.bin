@@ -1,0 +1,7 @@
+? €@?              0 ?   4 ??   P?                       瘐?boot [0;31mE (%d) %s: load partition table error![0m
+ boot_comm [0;31mE (%d) %s: bootloader_mmap(0x%x, 0x%x) failed[0m
+ [0;31mE (%d) %s: Failed to verify partition table[0m
+ [0;31mE (%d) %s: mismatch chip ID, expected %d, found %d[0m
+ [0;31mE (%d) %s: can't run on lower chip revision, expected %d, found %d[0m
+ bootloader_flash [0;31mE (%d) %s: tried to bootloader_mmap twice[0m
+ [0;31mE (%d) %s: bootloader_m
