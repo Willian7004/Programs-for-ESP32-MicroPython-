@@ -1,0 +1,15 @@
+EN              23:mosi
+UP              22：舵机5
+UN            TX0 
+34              RX0
+35               21：舵机6
+32               19:miso
+33               18:clk
+25:cs（触控）5:cs（显示）
+26:dc         TX2
+27:rst         RX2
+14:power     4：舵机3
+12：舵机1    2
+13：舵机2    15：舵机4
+VIN            GND 
+GND           3V3
