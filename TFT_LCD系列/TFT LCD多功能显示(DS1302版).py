@@ -77,8 +77,6 @@ while True:
     for ff in fonts:
         rtc_time=rtc.datetime()
         ds_time=ds1302.DateTime()
-        if rtc_time[5]==0 and rtc_time[6]<3 : #由于RTC精度高于DS1302，程序正常运行时每小时用RTC校准DS1302
-            ds1302.DateTime([rtc_time[0],rtc_time[1],rtc_time[2],rtc_time[3],rtc_time[4],rtc_time[5],rtc_time[6]])
         text = str(rtc_time[0])+'-'+str(rtc_time[1])+'-'+str(rtc_time[2])+'  '+str(week[rtc_time[3]])+'\n'+'---< '+str(rtc_time[4])+' : '+str(rtc_time[5])+' : '+str(rtc_time[6])+' >---'+'\n\n'+'Temperature: '+str(BMP.getTemp()) + ' C'+'\n'+'Pressure: '+str(BMP.getPress()) + ' Pa'+'\n'+'Altitude: '+str(BMP.getAltitude()) + ' m'
         display.set_font(ff)
         display.print(text)
