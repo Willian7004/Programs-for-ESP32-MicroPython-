@@ -46,6 +46,7 @@ def tilt(height1,height2): #前后倾斜,局部变量与全局变量通过大小
 def crawl(step,angle): #爬行，第一个参数为步骤数,第二个参数为相比直立状态降低的角度，步长随第二个参数的增大而增大
     if step==1:
         servos.position(4,90-angle-angle)
+        servos.position(7,90-angle)
     if step==2:
         servos.position(5,90-angle-angle)
     if step==3:
