@@ -80,7 +80,7 @@ def serial_cotrol(i1, i2): #串口控制
     while True:
         if Height1>45: #参数超出范围时设为最大值
             Height1=45
-        if mode==0 or mode>2: #不执行功能
+        if mode==0 or mode>3: #不执行功能
             Step=0 #步数复位            
         if mode==1: #爬行功能
             if Step==0:
