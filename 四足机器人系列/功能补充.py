@@ -80,9 +80,9 @@ def function(i1, i2): #功能函数，执行连续进行的动作
     global Height1
     global Height2
     while True:
-        if Height1>45: #参数超出范围时设为最大值
+        if Height1>45 and mode>0 and mode<7: #参数超出范围时设为最大值,但不处于功能函数内的模式时不更改数值
             Height1=45
-        if Height2>45: #参数超出范围时设为最大值
+        if Height2>45 and mode>0 and mode<7: #参数超出范围时设为最大值,但不处于功能函数内的模式时不更改数值
             Height2=45    
         if mode==0 or mode>6: #不执行功能
             Step=0 #步数复位            
