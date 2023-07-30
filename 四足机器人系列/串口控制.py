@@ -97,8 +97,24 @@ def serial_cotrol(i1, i2): #串口控制
                 Step=4
             elif Step==4:    
                 crawl(4,Height1)
-                Step=1      
-        if mode==2: #步行功能
+                Step=1  
+        if mode==2: #爬行功能（反向）
+            if Step==0:
+                tilt(Height1,Height1) #先降低高度
+                Step=4 #改变变量的值以进入下一步骤
+            elif Step==4:    
+                crawl(4,Height1)
+                Step=3
+            elif Step==3:    
+                crawl(3,Height1)
+                Step=2
+            elif Step==2:    
+                crawl(2,Height1)
+                Step=1
+            elif Step==1:    
+                crawl(1,Height1)
+                Step=4         
+        if mode==3: #步行功能（由于只有两个步骤，无正反向调节，可能不能正常使用，后续视实际测试情况进行调整）
             if Step>2:
                 Step=0
             if Step==0:
@@ -125,13 +141,13 @@ while True:
         Height2=Height2//1000
         delay=data%1000 #最后三位为延时
         #非连续执行的功能在此处执行
-        if mode==3: #直行功能
+        if mode==4: #直行功能
             if Height2<=180: #参数超出范围则不执行，下同
                 straight(Height2)  
-        if mode==4: #转向功能
+        if mode==5: #转向功能
             if Height2<=180:
                 turn(Height2)
-        if mode==5: #倾斜功能
+        if mode==6: #倾斜功能
             if Height1<=60 and Height2<=60:
                 tilt(Height1,Height2)        
     except:
